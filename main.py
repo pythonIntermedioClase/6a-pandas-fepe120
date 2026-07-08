@@ -139,11 +139,37 @@ def main():
 
     print("  Hasta luego.")
 
+declaraciones = [
+    {"nit": "900111222-0", "razon_social": "Empresa A", "valor_declarado": 4_500_000},
+    {"nit": "800333444-5", "razon_social": "Empresa B", "valor_declarado": 12_300_000},
+    {"nit": "700555666-1", "razon_social": "Empresa C", "valor_declarado": 2_100_000},
+]
 
+def construir_dataframe(declaraciones:list)->str:
+    df_declaraciones = pd.DataFrame(declaraciones)
+    forma = df_declaraciones.shape
+    filas = forma[0]
+    tamanio_lista = len(declaraciones)
+    if filas == tamanio_lista:
+        print(f"""
+        COINCIDEN
+        {"="*45}
+
+        {"|Elementos en la lista |":<15} {"Filas en el DataFrame|":>15}
+        {tamanio_lista:>15} {filas:>15}
+        """)
+    else:
+        print(f"""
+        NO COINCIDEN
+        {"== "*45}
+        {"|Elementos en la lista |":<15} {"Filas en el DataFrame|":>15}
+        {tamanio_lista:<15} {filas:>15}
+        """)
 # =============================================================================
 # PUNTO DE ENTRADA
 # =============================================================================
 
 if __name__ == "__main__":
-    main()
+    construir_dataframe(declaraciones)
+    #main()
 
